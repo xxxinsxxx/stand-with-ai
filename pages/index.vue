@@ -1,11 +1,26 @@
 <script setup lang="ts">
+import LogoWithHalo from "~/pages/components/LogoWithHalo.vue";
+import LogoWithHaloInTailwind from "~/pages/components/logoWithHaloInTailwind.vue";
+
 const route = useRoute()
 </script>
 
 <template>
-  <div>
-    <h1>Nuxt Routing set up successfully!？？？</h1>
-    <p>Current route: {{ route.path }}</p>
-    <a href="https://nuxt.com/docs/getting-started/routing1" target="_blank">Learn more about Nuxt Routing</a>
+  <div class="main-container">
+<!--    <LogoWithHalo/>-->
+    <LogoWithHaloInTailwind/>
   </div>
 </template>
+
+<style scoped>
+.main-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+</style>
+<style>
+body {
+  margin: 0;
+}
+</style>
