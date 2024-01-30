@@ -1,8 +1,11 @@
 <template>
+  <!-- 页面结构 -->
   <div class="logo-container" @mousemove="handleMouseMove" @mouseleave="handleMouseLeave">
+    <!-- Logo 文字区域 -->
     <div class="logo" :style="{ maskImage: showHalo ? `radial-gradient(circle at ${haloLeft}px ${haloTop}px, black 75%, transparent 100%)` : 'none', mixBlendMode: showHalo ? 'lighten' : 'normal', opacity: textOpacity }">
       中南研究院
     </div>
+    <!-- 光圈效果区域 -->
     <div v-if="showHalo" class="halo" :style="{ left: `${haloLeft}px`, top: `${haloTop}px` }"></div>
   </div>
 </template>
@@ -10,11 +13,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const showHalo = ref(false);
-const haloLeft = ref(0);
-const haloTop = ref(0);
-const textOpacity = ref(1);
+// 响应式数据
+const showHalo = ref(false); //是否应显示光标周围的光晕效果
+const haloLeft = ref(0); //光晕效果的水平位置
+const haloTop = ref(0); //光晕效果的垂直位置
+const textOpacity = ref(1); //徽标内文本的不透明度
 
+// 处理鼠标移动事件
 const handleMouseMove = (event: MouseEvent) => {
   showHalo.value = true;
   haloLeft.value = event.clientX;
@@ -25,6 +30,7 @@ const handleMouseMove = (event: MouseEvent) => {
   textOpacity.value = Math.max(0, 1 - distance / 2000);
 };
 
+// 处理鼠标离开事件
 const handleMouseLeave = () => {
   showHalo.value = false;
   textOpacity.value = 1;
@@ -32,6 +38,7 @@ const handleMouseLeave = () => {
 </script>
 
 <style scoped>
+/* 样式定义 */
 .logo-container {
   position: relative;
   width: 100%;
